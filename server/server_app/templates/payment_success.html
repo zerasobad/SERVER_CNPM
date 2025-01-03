@@ -1,0 +1,56 @@
+{% extends 'layout/base.html' %}
+
+{% block title %}Thanh toán thành công{% endblock %}
+
+{% block content %}
+<div class="container mx-auto px-10 py-8">
+    <div class="text-center">
+        <!-- Loading Spinner -->
+        <div id="loading-spinner" class="flex justify-center items-center">
+            <div class="loader"></div>
+        </div>
+
+        <!-- Success Message -->
+        <div id="success-message" class="hidden mt-4">
+            <h2 class="text-3xl font-bold text-green-600 animate__animated animate__fadeInUp">Thanh toán thành công!</h2>
+            <p class="mt-2 text-lg text-gray-500 animate__animated animate__fadeInUp animate__delay-1s">Cảm ơn bạn đã sử dụng dịch vụ của chúng tôi.</p>
+            <button onclick="window.location.href='/receipt'" class="mt-4 px-6 py-2 text-white bg-blue-700 hover:bg-blue-800 rounded-lg transition ease-in-out duration-300 transform hover:scale-105">
+                Bách zề
+            </button>
+        </div>
+    </div>
+</div>
+
+<!-- Include Animate.css for animations -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+<script>
+    // Function to simulate a 3-second loading
+    window.onload = function() {
+        setTimeout(function() {
+            // Hide loading spinner and show success message
+            document.getElementById('loading-spinner').style.display = 'none';
+            document.getElementById('success-message').classList.remove('hidden');
+        }, 3000); // 3000ms = 3 seconds
+    }
+</script>
+
+<style>
+    /* Customize the spinner */
+    .loader {
+        border: 10px solid #f3f3f3; /* Light grey */
+        border-top: 10px solid #3498db; /* Blue */
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+
+    /* You can further tweak the styles as needed */
+</style>
+{% endblock %}
